@@ -20,6 +20,8 @@ returns the number into int/float or returns None if str_num is "".
 """
 
 
+
+
 def make_int(str_num):
     str_num = str_num.strip()
     return int(str_num) if str_num else None
@@ -90,6 +92,9 @@ class AnnualReport:
                       "Humidity: {6}% on {7} {8}"
 
     def display(self):
+        """
+        displays formatted report
+        """
         self.report = self.report.format(self.max_temp, months[self.max_date.month - 1], self.max_date.day,
                                          self.min_temp, months[self.min_date.month - 1], self.min_date.day,
                                          self.most_humid, months[self.humid_date.month - 1], self.humid_date.day)
@@ -106,10 +111,10 @@ class MonthlyReport:
         self.min_mean_temp = None
         self.mean_humid = None
 
-    """
-    displays formatted report
-    """
     def display(self):
+        """
+        displays formatted report
+        """
         self.report = self.report.format(self.max_mean_temp, self.min_mean_temp, round(self.mean_humid))
         print(self.report)
 
@@ -124,10 +129,10 @@ class CalculateResults:
         self.year = None
         self.month = None
 
-    """
-    opens files from specific year and calculates annual report data to be displayed
-    """
     def calculate_annual_report(self, directory, year):
+        """
+        opens files from specific year and calculates annual report data to be displayed
+        """
         self.directory = directory
         self.year = year
         annual_report = AnnualReport()
@@ -168,11 +173,10 @@ class CalculateResults:
                 continue
         return annual_report
 
-    """
-    opens files from specific year and month and calculates monthly report data to be displayed
-    """
     def calculate_monthly_report(self, directory, year, month):
-
+        """
+        opens files from specific year and month and calculates monthly report data to be displayed
+        """
         self.directory = directory
         self.year = year
         self.month = month
@@ -208,11 +212,12 @@ class CalculateResults:
 
         except FileNotFoundError:
             print("File not found")
-    """
-    opens files from specific year and month and displays a horizontal bar chart representing two different colors, Cyan
-    for minimum temperature and Red for maximum temperature
-    """
+
     def display_bars(self, directory, year, month, bars):
+        """
+        opens files from specific year and month and displays a horizontal bar chart representing two different colors,
+        Cyan for minimum temperature and Red for maximum temperature
+        """
         self.directory = directory
         self.year = year
         self.month = month
