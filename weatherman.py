@@ -106,6 +106,9 @@ class MonthlyReport:
         self.min_mean_temp = None
         self.mean_humid = None
 
+    """
+    displays formatted report
+    """
     def display(self):
         self.report = self.report.format(self.max_mean_temp, self.min_mean_temp, round(self.mean_humid))
         print(self.report)
@@ -121,6 +124,9 @@ class CalculateResults:
         self.year = None
         self.month = None
 
+    """
+    opens files from specific year and calculates annual report data to be displayed
+    """
     def calculate_annual_report(self, directory, year):
         self.directory = directory
         self.year = year
@@ -162,6 +168,9 @@ class CalculateResults:
                 continue
         return annual_report
 
+    """
+    opens files from specific year and month and calculates monthly report data to be displayed
+    """
     def calculate_monthly_report(self, directory, year, month):
 
         self.directory = directory
@@ -199,7 +208,10 @@ class CalculateResults:
 
         except FileNotFoundError:
             print("File not found")
-
+    """
+    opens files from specific year and month and displays a horizontal bar chart representing two different colors, Cyan
+    for minimum temperature and Red for maximum temperature
+    """
     def display_bars(self, directory, year, month, bars):
         self.directory = directory
         self.year = year
